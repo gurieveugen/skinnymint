@@ -6,10 +6,10 @@
  */
 ?>
 <?php get_header(); ?>
-<article id="content">
+<div id="main" class="main-page container">
 <?php if ( have_posts() ) : the_post(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<header class="page-header">
+		<header class="page_header">
 			<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
 			<div class="page-thumbnail">
 				<?php the_post_thumbnail(); ?>
@@ -30,6 +30,5 @@
 	</article><!-- #post -->
 	<?php comments_template(); ?>
 <?php endif; ?>
-</article>
-<?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

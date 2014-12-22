@@ -28,7 +28,9 @@
 					</ul>
 				</div>
 				<div class="b-post-heading clearfix">
-					<img src="<?php echo TDU; ?>/images/img-2.jpg" alt="" class="alignleft">
+					<div class="image">
+						<img src="<?php echo TDU; ?>/images/img-2.jpg" alt="">
+					</div>
 					<div class="text">
 						<div class="row-soc clearfix">
 							<strong class="b-love right">302</strong>
@@ -62,37 +64,31 @@
 				</div>
 				<section class="b-related-articles">
 					<h3>Related articles</h3>
-					<div class="row">
-						<div class="col-xs-4">
-							<article class="b-box-article">
-								<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
-								<div class="content">
-									<div class="row-cat"><a href="#">CREATIVE</a></div>
-									<h1><a href="#">8 Foreign Beauty Brands You Should Try Right This Second</a></h1>
-									<p>Alex Ostrowski</p>
-								</div>
-							</article>
-						</div>
-						<div class="col-xs-4">
-							<article class="b-box-article">
-								<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
-								<div class="content">
-									<div class="row-cat"><a href="#">CREATIVE</a></div>
-									<h1><a href="#">You Should Try Right</a></h1>
-									<p>This Second Alex Ostrowski</p>
-								</div>
-							</article>
-						</div>
-						<div class="col-xs-4">
-							<article class="b-box-article">
-								<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
-								<div class="content">
-									<div class="row-cat"><a href="#">CREATIVE</a></div>
-									<h1><a href="#">You Should Try Right</a></h1>
-									<p>This Second Alex Ostrowski</p>
-								</div>
-							</article>
-						</div>
+					<div class="h-related-articles">
+						<article class="b-box-article">
+							<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
+							<div class="content">
+								<div class="row-cat"><a href="#">CREATIVE</a></div>
+								<h1><a href="#">8 Foreign Beauty Brands You Should Try Right This Second</a></h1>
+								<p>Alex Ostrowski</p>
+							</div>
+						</article>
+						<article class="b-box-article">
+							<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
+							<div class="content">
+								<div class="row-cat"><a href="#">CREATIVE</a></div>
+								<h1><a href="#">You Should Try Right</a></h1>
+								<p>This Second Alex Ostrowski</p>
+							</div>
+						</article>
+						<article class="b-box-article">
+							<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
+							<div class="content">
+								<div class="row-cat"><a href="#">CREATIVE</a></div>
+								<h1><a href="#">You Should Try Right</a></h1>
+								<p>This Second Alex Ostrowski</p>
+							</div>
+						</article>
 					</div>
 				</section>
 				<section class="section-comments">
@@ -132,15 +128,15 @@
 <div class="section-promo">
 	<div class="container">
 		<div class="dt">
-			<div class="dtc">
-				<img src="<?php echo TDU; ?>/images/temp-product.png" alt="" class="image">
-				<div class="content">
-					<h3>Get Started Now</h3>
-					<p>Change your lifestyle now with original 2 step natural tea program and achieve the best natural cleansing, energy boosting and detoxifying effects.</p>
-					<div class="buttons">
-						<a href="#" class="btn-pink">Buy Now</a>
-						<a href="#" class="link">View All Products</a>
-					</div>
+			<div class="dtc image">
+				<img src="<?php echo TDU; ?>/images/temp-product.png" alt="">
+			</div>
+			<div class="dtc content">
+				<h3>Get Started Now</h3>
+				<p>Change your lifestyle now with original 2 step natural tea program and achieve the best natural cleansing, energy boosting and detoxifying effects.</p>
+				<div class="buttons">
+					<a href="#" class="btn-pink">Buy Now</a>
+					<a href="#" class="link">View All Products</a>
 				</div>
 			</div>
 		</div>

@@ -9,15 +9,6 @@ define('TDU', get_bloginfo('template_url'));
 add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
 
-register_sidebar(array(
-	'id' => 'right-sidebar',
-	'name' => 'Right Sidebar',
-	'before_widget' => '<div class="widget %2$s" id="%1$s">',
-	'after_widget' => '</div>',
-	'before_title' => '<h3>',
-	'after_title' => '</h3>'
-));
-
 add_theme_support( 'post-thumbnails' );
 /*set_post_thumbnail_size( 604, 270, true );
 add_image_size( 'single-post-thumbnail', 400, 9999, false );*/
@@ -151,3 +142,41 @@ function theme_default_content( $content ) {
 	return $content;
 }
 add_filter('default_content', 'theme_default_content');
+
+
+// ==============================================================
+// REQUIRE
+// ==============================================================
+include_once 'gcframework/__.php';
+// ==============================================================
+// Actions and filters
+// ==============================================================
+add_action('widgets_init', 'widgetsInit');
+// ==============================================================
+// Image sizes
+// ==============================================================
+add_image_size( 'medium', 370, 248, true );
+add_image_size( 'large', 770, 450, true );
+// ==============================================================
+// Other classes
+// ==============================================================
+$initializeTheme = new InitializeTheme();
+$posts = new Posts();
+
+
+/**
+ * Register custom sidebar
+ */
+function widgetsInit()
+{
+	register_sidebar(
+		array(
+			'id'            => 'right-sidebar',
+			'name'          => 'Right sidebar',
+			'before_widget' => '<article class="widget %2$s" id="%1$s">',
+			'after_widget'  => '</article>',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>'
+		)
+	);
+}

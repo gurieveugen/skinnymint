@@ -290,15 +290,35 @@
 			<div class="header-row">
 				<div class="container">
 					<form action="#" class="form-search">
-						<input type="text" value="" placeholder="Search and press Enter">
+						<button class="btn-search">Search</button>
+						<div class="holder">
+							<input type="text" value="" placeholder="Search and press Enter">
+						</div>
 					</form>
+					<script>
+						jQuery(function(){
+							jQuery('.btn-search').click(function(){
+								jQuery('.form-search .holder').toggleClass('open');
+								return false;
+							});
+						});
+					</script>
 					<ul class="nav-sub">
 						<li><a href="#">Tips</a></li>
 						<li><a href="#">Recipe</a></li>
 						<li><a href="#">Fitness</a></li>
 						<li><a href="#">Tea</a></li>
 						<li><a href="#">Weight Loss</a></li>
-						<li class="has-drop"><a href="#">Experts</a></li>
+						<li class="has-drop">
+							<a href="#">Experts</a>
+							<ul>
+								<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
