@@ -1,0 +1,10 @@
+<?php
+/**
+ * @package WordPress
+ * @subpackage Base_Theme
+ */
+?>
+
+<?php get_header(); ?>
+
+<?php get_footer(); ?>
