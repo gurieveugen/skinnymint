@@ -147,11 +147,18 @@ add_filter('default_content', 'theme_default_content');
 // ==============================================================
 // REQUIRE
 // ==============================================================
-include_once 'gcframework/__.php';
+include_once 'gc/__.php';
+include_once 'gc/widgets/WidgetImageBox.php';
+include_once 'gc/widgets/WidgetHotReads.php';
+include_once 'gc/widgets/WidgetRandomPosts.php';
 // ==============================================================
 // Actions and filters
 // ==============================================================
 add_action('widgets_init', 'widgetsInit');
+add_filter('nav_menu_css_class', 'cssAttributesFilter', 100, 1);
+add_filter('nav_menu_item_id', 'cssAttributesFilter', 100, 1);
+add_filter('page_css_class', 'cssAttributesFilter', 100, 1);
+add_filter( 'embed_defaults', 'biggerEmbedSize' );
 // ==============================================================
 // Image sizes
 // ==============================================================
@@ -162,7 +169,20 @@ add_image_size( 'large', 770, 450, true );
 // ==============================================================
 $initializeTheme = new InitializeTheme();
 $posts = new Posts();
+$editors_picks = new EditorsPicks();
+$instagram_feed = new InstagramFeed();
+$related_articles = new RelatedArticles();
 
+
+
+/**
+ * Set default embed youtube size
+ * @return array --- size
+ */
+function biggerEmbedSize()
+{ 
+	return array( 'width' => 760, 'height' => 430, 'class' => 'youtube' );
+}
 
 /**
  * Register custom sidebar
@@ -179,4 +199,30 @@ function widgetsInit()
 			'after_title'   => '</h3>'
 		)
 	);
+
+	register_sidebar(
+		array(
+			'id'            => 'right-sidebar-inner',
+			'name'          => 'Right sidebar (inner pages)',
+			'before_widget' => '<article class="widget %2$s" id="%1$s">',
+			'after_widget'  => '</article>',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>'
+		)
+	);
+	register_widget('WidgetImageBox');
+	register_widget('WidgetHotReads');
+	register_widget('WidgetRandomPosts');
+}
+
+function hide()
+{
+	if(isset($_GET['show'])) echo 'show';
+	else echo 'hide';
+}
+
+function cssAttributesFilter($arr) 
+{
+	if(in_array('menu-item-has-children', (array)$arr)) $arr[] = 'has-drop';
+	return $arr;
 }

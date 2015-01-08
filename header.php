@@ -18,7 +18,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); 
 		wp_head(); ?>
-	<script type="text/javascript" src="js/jquery.main.js" ></script>
+	<script type="text/javascript" src="<?php echo TDU; ?>/js/jquery.main.js" ></script>
 	<!--[if lt IE 9]>
 		<script src="<?php echo TDU; ?>/js/html5shiv.min.js"></script>
 		<script src="<?php echo TDU; ?>/js/respond.min.js"></script>
@@ -31,13 +31,6 @@
 			});
 		</script>
 	<![endif]-->
-	<script>
-	jQuery(window).scroll(function(){
-		if(jQuery(window).scrollTop() > 100){
-			jQuery('header-cart-items').css({position:fixed, top: 0});
-		}
-	});
-	</script>
 </head>
 <body <?php body_class(); ?>>
 		<div id="spree-header">
@@ -48,7 +41,7 @@
 							<li id="locale-select" class="small" data-hook="">
 								<form accept-charset="UTF-8" action="/locale/set" method="post">
 									<div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="WJfVDuTAUjhVF14UchIwIjyExd6h9KK8oTeY3rqEu1U="></div>
-									<div class="select2-container select2" id="s2id_locale">
+									<div class="select2-container select2 <?php hide(); ?>" id="s2id_locale">
 										<a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">English</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1">
 										<div class="select2-drop select2-display-none select2-with-searchbox">
 											<div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>
@@ -69,7 +62,7 @@
 							<li id="currency-select" class="small" data-hook="">
 								<form accept-charset="UTF-8" action="/currency/set.html" method="post">
 									<div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="WJfVDuTAUjhVF14UchIwIjyExd6h9KK8oTeY3rqEu1U="></div>
-									<div class="select2-container" id="s2id_currency">
+									<div class="select2-container <?php hide(); ?>" id="s2id_currency">
 										<a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-3"><img class="flag currency-usd" src="<?php echo TDU; ?>/images/blank.gif"> <span>USD</span></span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen3" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-3" id="s2id_autogen3">
 										<div class="select2-drop select2-display-none select2-with-searchbox">
 											<div class="select2-search">       <label for="s2id_autogen3_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-3" id="s2id_autogen3_search" placeholder="">   </div>
@@ -97,7 +90,7 @@
 						<div id="shipping-notification" class="col-md-6">
 							Free express delivery within Ukraine!
 						</div>
-						<ul id="nav-bar" class="nav small pull-right hidden-sm hidden-xs" data-hook="">
+						<ul id="nav-bar" class="nav small pull-right hidden-sm hidden-xs <?php hide(); ?>" data-hook="">
 							<li id="link-to-login"><a href="/login">Log In</a></li>
 							<li id="link-to-signup"><a href="/signup">Sign Up</a></li>
 							<li id="search-bar" data-hook="">
@@ -115,17 +108,13 @@
 							</figure>
 							<div class="col-lg-9 col-md-9 col-sm-8 col-xs-6">
 								<div id="nav-bar-quick-links">
-									<div class="cart pull-right">
+									<div class="cart pull-right <?php hide(); ?>">
 										<div data-hook="" id="link-to-cart">
 											<a class="cart-info full" href="/cart">
 												<div class="cart-icon">&nbsp;</div>
 												<span class="cart-count">1</span>
 											</a>
 										</div>
-										<script>
-											Spree.fetch_cart()
-											 
-										</script>
 									</div>
 									<div class="menu-toggle">
 										<button class="navbar-toggle" data-target="#nav-bar-collapse" data-toggle="collapse" type="button">
@@ -141,12 +130,12 @@
 									<div class="page-links pull-right hidden-sm hidden-xs">
 										<ul class="nav navbar-nav" id="nav-bar">
 											<li>
-												<a href="/products" id="shop-link">Shop</a>
+												<a href="https://skinnymint-production.herokuapp.com/products" id="shop-link">Shop</a>
 											</li>
-											<li><a href="/love_board">Love Board</a></li>
-											<li><a href="/reviews">Reviews</a></li>
+											<li><a href="https://skinnymint-production.herokuapp.com/love_board">Love Board</a></li>
+											<li><a href="https://skinnymint-production.herokuapp.com/reviews">Reviews</a></li>
 											<li class="current open-drop"><a href="#">Lifestyle</a></li>
-											<li class=""><a href="/ambassadors">Ambassadors</a></li>
+											<li class=""><a href="https://skinnymint-production.herokuapp.com/ambassadors">Ambassadors</a></li>
 										</ul>
 									</div>
 								</div>
@@ -157,11 +146,11 @@
 						<div class="collapse navbar-collapse" id="nav-bar-collapse">
 							<ul class="nav navbar-nav" id="nav-bar">
 								<li>
-									<a href="/products">Shop</a>
+									<a href="https://skinnymint-production.herokuapp.com/products">Shop</a>
 								</li>
-								<li class="current"><a href="/reviews">Real Results</a></li>
-								<li class=""><a href="/love_board">Love Board</a></li>
-								<li class=""><a href="/ambassadors">Ambassadors</a></li>
+								<li class="current"><a href="https://skinnymint-production.herokuapp.com/reviews">Real Results</a></li>
+								<li class=""><a href="https://skinnymint-production.herokuapp.com/love_board">Love Board</a></li>
+								<li class=""><a href="https://skinnymint-production.herokuapp.com/ambassadors">Ambassadors</a></li>
 							</ul>
 							<ul class="nav navbar-nav">
 								<li>
@@ -289,37 +278,34 @@
 			</header>
 			<div class="header-row">
 				<div class="container">
-					<form action="#" class="form-search">
+					<form action="" class="form-search">
 						<button class="btn-search">Search</button>
 						<div class="holder">
-							<input type="text" value="" placeholder="Search and press Enter">
+							<input type="text" name="s" autocomplete="off" value="" placeholder="Search and press Enter">
 						</div>
 					</form>
-					<script>
-						jQuery(function(){
-							jQuery('.btn-search').click(function(){
-								jQuery('.form-search .holder').toggleClass('open');
-								return false;
-							});
-						});
-					</script>
-					<ul class="nav-sub">
-						<li><a href="#">Tips</a></li>
-						<li><a href="#">Recipe</a></li>
-						<li><a href="#">Fitness</a></li>
-						<li><a href="#">Tea</a></li>
-						<li><a href="#">Weight Loss</a></li>
-						<li class="has-drop">
-							<a href="#">Experts</a>
-							<ul>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-							</ul>
-						</li>
-					</ul>
+					<?php
+					$defaults = array(
+						'theme_location'  => 'top_nav',
+						'menu'            => '',
+						'container'       => '',
+						'container_class' => '',
+						'container_id'    => '',
+						'menu_class'      => 'nav-sub',
+						'menu_id'         => '',
+						'echo'            => true,
+						'fallback_cb'     => 'wp_page_menu',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						'depth'           => 0,
+						'walker'          => ''
+					);
+
+					wp_nav_menu( $defaults );
+					?>
 				</div>
 			</div>
 		</div>

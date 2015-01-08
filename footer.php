@@ -45,33 +45,33 @@
 								AU: (03) 9008 4282
 							</p>
 							<p>          <a href="mailto:hello@skinnymint.com">hello@skinnymint.com</a></p>
-							<p>          <a href="/about_us">Visit us</a></p>
-							<p>          <a data-method="post" href="/browsers/set?browser=mobile" rel="nofollow">Switch to Mobile Version</a>
+							<p>          <a href="https://skinnymint-production.herokuapp.com/about_us">Visit us</a></p>
+							<p>          <a data-method="post" href="https://skinnymint-production.herokuapp.com/browsers/set?browser=mobile" rel="nofollow">Switch to Mobile Version</a>
 							</p>
 						</div>
 						<div class="col-md-6 hidden-xs hidden-sm" data-hook="" id="footer-right">
 							<nav id="footer-pages">
 								<ul class="list-unstyled col-md-12 small">
 									<li class=" col-md-6.col-sm-6">
-										<a href="/about_us">About us</a>
+										<a href="https://skinnymint-production.herokuapp.com/about_us">About us</a>
 									</li>
 									<li class=" col-md-6.col-sm-6">
-										<a href="/press">Press</a>
+										<a href="https://skinnymint-production.herokuapp.com/press">Press</a>
 									</li>
 									<li class=" col-md-6.col-sm-6">
-										<a href="/faq">FAQ</a>
+										<a href="https://skinnymint-production.herokuapp.com/faq">FAQ</a>
 									</li>
 									<li class=" col-md-6.col-sm-6">
-										<a href="/shipping_refund_policy">Shipping &amp; Refund Policy</a>
+										<a href="https://skinnymint-production.herokuapp.com/shipping_refund_policy">Shipping &amp; Refund Policy</a>
 									</li>
 									<li class=" col-md-6.col-sm-6">
-										<a href="/privacy_policy">Privacy Policy</a>
+										<a href="https://skinnymint-production.herokuapp.com/privacy_policy">Privacy Policy</a>
 									</li>
 									<li class=" col-md-6.col-sm-6">
-										<a href="/terms_conditions">Terms &amp; Conditions</a>
+										<a href="https://skinnymint-production.herokuapp.com/terms_conditions">Terms &amp; Conditions</a>
 									</li>
 									<li class=" col-md-6.col-sm-6">
-										<a href="/jobs">Jobs</a>
+										<a href="https://skinnymint-production.herokuapp.com/jobs">Jobs</a>
 									</li>
 								</ul>
 							</nav>

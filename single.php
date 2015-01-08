@@ -1,128 +1,93 @@
 <?php
-/**
- *
- * @package WordPress
- * @subpackage Base_Theme
- */
+get_header(); 
+the_post();
+Posts::read(get_the_id()); 
+$categories = Posts::getCategories(get_the_id());
+$cat_names  = array();
+$user = get_user_by('id', get_current_user_id());
+$category = '';
+
+if(count($categories))
+{
+	$category = $categories[0]->term_id;
+	foreach ($categories as $cat) 
+	{
+		$cat_names[] = $cat->name; 	
+	}
+}
 ?>
-<?php get_header(); ?>
 
 <div id="main" class="main-blog-post container">
 	<div class="clearfix">
 		<div class="content-blog">
 			<article class="article-blog content-style">
-				<h1 class="title-article">The 5 Best Beauty Tutorials for Homecoming, from Smoky Eyes to Pumped-up Puckers</h1>
+				<h1 class="title-article"><?php the_title(); ?></h1>
 				<div class="b-info-post clearfix">
 					<div class="info">
-						<strong class="r">DIET</strong>
-						<span class="r">Sandra McDermit</span>
+						<strong class="r"><?php echo implode(' ', $cat_names); ?></strong>
+						<span class="r"><?php echo $user->data->display_name; ?></span>
 					</div>
-					<div class="shares">
-						<strong>367</strong>
+					<div class="shares"> 
+						<strong><?php echo Share::getSumCount(get_the_id()); ?></strong>
 						Shares
 					</div>
 					<ul class="b-socials">
-						<li><a href="#" class="twitter">twitter</a></li>
-						<li><a href="#" class="facebook">facebook</a></li>
-						<li><a href="#" class="pinterest">pinterest</a></li>
+						<li><a href="<?php echo Share::getTwitter(get_the_id()); ?>" class="twitter share-blank">twitter</a></li>
+						<li><a href="<?php echo Share::getFacebook(get_the_id()); ?>" class="facebook share-blank">facebook</a></li>
+						<li><a href="<?php echo Share::getPinterest(get_the_id()); ?>" class="pinterest share-blank">pinterest</a></li>
 					</ul>
 				</div>
 				<div class="b-post-heading clearfix">
-					<div class="image">
-						<img src="<?php echo TDU; ?>/images/img-2.jpg" alt="">
-					</div>
+					<?php
+					if(has_post_thumbnail() && get_post_meta(get_the_id(), 'ai_has_a_video', true ) != 'on')
+					{
+						?>
+						<div class="image">
+						<?php the_post_thumbnail( 'medium' ); ?>
+						</div>
+						<?php
+					}
+					?>
 					<div class="text">
 						<div class="row-soc clearfix">
-							<strong class="b-love right">302</strong>
+							<strong class="b-love right"><?php echo Posts::getLikes(get_the_id()); ?></strong>
 							<div class="left">
 								facebook like
 							</div>
 						</div>
-						<p>Demi Lovato is never not changing up her hair. From <a href="#">purple to blue</a> to turquoise, she's tried (and totally pulled off) it all. But one thing that stays constant—and constantly on-point—is the singer's makeup game. Which is why it was only a matter of time until she landed her very own beauty deal.</p>
+						<?php the_excerpt(); ?>
 					</div>
 				</div>
-				<p>Today it was announced that Demi will be the first-ever brand ambassador of N.Y.C. New York Color, AKA the drugstore favorite we have to thank/blame for those 99-cent nail polishes we can't stop buying, among lots of other budget-friendly buys.</p>
-				<p>As the official face of the brand, Demi will be repping them on social media (including behind-the-scenes glimpses at campaign shoots!). Plus, kicking off in early 2015, she'll start popping up in their advertisements—so keep an eye out!</p>
-				<p>In case you've lost track, this latest partnership is on the heels of a bunch of other major beauty collabs for the style icon. In addition to being able to snag Demi-approved skincareand hair extensions, we can now get our hands on her favorite makeup, too. If we could just get a step-by-step breakdown about how to effectively steal her always-flawless smoky eye, then we'd really be set.</p>
-				<h2>This is a subtitle</h2>
-				<p>Demi fans, let's talk. Excited to get more #lovator action in your beauty routine?</p>
-				<p>As the official face of the brand, Demi will be repping them on social media (including behind-the-scenes glimpses at campaign shoots!). Plus, kicking off in early 2015, she'll start popping up in their advertisements—so keep an eye out!</p>
-				<p>In case you've lost track, this latest partnership is on the heels of a bunch of other major beauty collabs for the style icon. In addition to being able to snag Demi-approved skincareand hair extensions, we can now get our hands on her favorite makeup, too. If we could just get a step-by-step breakdown about how to effectively steal her always-flawless smoky eye, then we'd really be set.</p>
-				<p>As the official face of the brand, Demi will be repping them on social media (including behind-the-scenes glimpses at campaign shoots!). Plus, kicking off in early 2015, she'll start popping up in their advertisements—so keep an eye out!</p>
-				<p>In case you've lost track, this latest partnership is on the heels of a bunch of other major beauty collabs for the style icon. In addition to being able to snag Demi-approved skincareand hair extensions, we can now get our hands on her favorite makeup, too. If we could just get a step-by-step breakdown about how to effectively steal her always-flawless smoky eye, then we'd really be set.</p>
-				<h2>This is another sub title</h2>
-				<p>Demi fans, let's talk. Excited to get more #lovator action in your beauty routine?</p>
-				<p>As the official face of the brand, Demi will be repping them on social media (including behind-the-scenes glimpses at campaign shoots!). Plus, kicking off in early 2015, she'll start popping up in their advertisements—so keep an eye out!</p>
-				<p>In case you've lost track, this latest partnership is on the heels of a bunch of other major beauty collabs for the style icon. In addition to being able to snag Demi-approved skincareand hair extensions, we can now get our hands on her favorite makeup, too. If we could just get a step-by-step breakdown about how to effectively steal her always-flawless smoky eye, then we'd really be set.</p>
-				<p>As the official face of the brand, Demi will be repping them on social media (including behind-the-scenes glimpses at campaign shoots!). Plus, kicking off in early 2015, she'll start popping up in their advertisements—so keep an eye out!</p>
+				<?php the_content(); ?>
 				<div class="b-post-socials">
 					<div class="row-soc">facebook like</div>
 					<div class="row-soc">
-						<a href="#" class="btn-fshare">Share this story</a>
-						<a href="#" class="btn-tweet">Tweet this story</a>
+						<a href="<?php echo Share::getFacebook(get_the_id()); ?>" class="btn-fshare share-blank">Share this story</a>
+						<a href="<?php echo Share::getTwitter(get_the_id()); ?>" class="btn-tweet share-blank">Tweet this story</a>
 					</div>
 				</div>
-				<section class="b-related-articles">
-					<h3>Related articles</h3>
-					<div class="h-related-articles">
-						<article class="b-box-article">
-							<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
-							<div class="content">
-								<div class="row-cat"><a href="#">CREATIVE</a></div>
-								<h1><a href="#">8 Foreign Beauty Brands You Should Try Right This Second</a></h1>
-								<p>Alex Ostrowski</p>
-							</div>
-						</article>
-						<article class="b-box-article">
-							<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
-							<div class="content">
-								<div class="row-cat"><a href="#">CREATIVE</a></div>
-								<h1><a href="#">You Should Try Right</a></h1>
-								<p>This Second Alex Ostrowski</p>
-							</div>
-						</article>
-						<article class="b-box-article">
-							<a href="#" class="image"><img src="<?php echo TDU; ?>/images/img-2.jpg" alt=""></a>
-							<div class="content">
-								<div class="row-cat"><a href="#">CREATIVE</a></div>
-								<h1><a href="#">You Should Try Right</a></h1>
-								<p>This Second Alex Ostrowski</p>
-							</div>
-						</article>
-					</div>
-				</section>
+				<?php echo do_shortcode('[related_articles category="'.$category.'"]'); ?>
 				<section class="section-comments">
 					<h2>Comments</h2>
-					<img src="<?php echo TDU; ?>/images/temp-comments.png" alt="">
+					<div id="disqus_thread"></div>
+					<script type="text/javascript">
+					    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+					    var disqus_shortname = 'skinnymint'; // required: replace example with your forum shortname
+
+					    /* * * DON'T EDIT BELOW THIS LINE * * */
+					    (function() {
+					        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+					        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+					        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+					    })();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+					
+					<!-- <img src="<?php echo TDU; ?>/images/temp-comments.png" alt=""> -->
 				</section>
 			</article>
 		</div>
-		<div class="sidebar-blog">
-			<aside class="widget widget-ad">
-				<a href="#"><img src="<?php echo TDU; ?>/images/img-ad-temp.png" alt=""></a>
-			</aside>
-			<aside class="widget widget-reads">
-				<h3>Hot reads!</h3>
-				<ul class="list-reads">
-					<li>
-						<p><a href="#">You Know Kyliejenner's Super-Long Extensions? You're About to Be Able to Buy 'Em</a></p>
-						Lisa Simpson
-					</li>
-					<li>
-						<p><a href="#">You Know Kyliejenner's Super-Long Extensions? You're About to Be Able to Buy 'Em</a></p>
-						Lisa Simpson
-					</li>
-					<li>
-						<p><a href="#">You Know Kyliejenner's Super-Long Extensions? You're About to Be Able to Buy 'Em</a></p>
-						Lisa Simpson
-					</li>
-					<li>
-						<p><a href="#">You Know Kyliejenner's Super-Long Extensions? You're About to Be Able to Buy 'Em</a></p>
-						Lisa Simpson
-					</li>
-				</ul>
-			</aside>
-		</div>
+		<?php get_sidebar('inner'); ?>
 	</div>
 </div>
 <div class="section-promo">
